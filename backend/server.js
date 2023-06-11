@@ -17,12 +17,17 @@ app.get("/", (req, res) => {
     res.send("Home Page")
 })
 
+app.get("/about", (req, res) => {
+    res.send("Stuff about me")
+})
+
 const PORT = process.env.port || 5000;
 
 //Connect to MongoDB and Start the Server
 mongoose
-    .connect(process.env.MONGO_URI)
+    .connect("mongodb+srv://kansara:Nbc7YDQ3FTad0d6c@inventory.hzdkpav.mongodb.net/?retryWrites=true&w=majority")
     .then(() => {
+        console.log("MongoDB Connected");
         app.listen(PORT, () => {
             console.log(`Server is running on port: ${PORT}`);
         });    
