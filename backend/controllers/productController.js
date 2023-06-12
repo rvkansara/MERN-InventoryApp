@@ -67,3 +67,12 @@ const deleteProduct = asyncHandler(async(req, res) => {
         res.status(500).send({message: error.message})
     }
 })
+
+module.exports = {
+    createProduct,
+    findProductbyID,
+    getAllProducts,
+    updateProduct,
+    deleteProduct,
+    findProductbyID,
+  };
