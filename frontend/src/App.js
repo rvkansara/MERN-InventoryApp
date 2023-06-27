@@ -1,25 +1,46 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {useEffect, useState} from 'react';
+import {uuid} from 'uuidv4'
+import Sidebar from "./components/Sidebar";
+import DataTable from './components/DataTable';
+import ProductForm from './components/AddProductForm';
 
-function App() {
+
+
+const App = () => {
+  const [products, setProducts] = useState([]);
+  const LOCAL_STORAGE_KEY = "products";
+ 
+  const addProductHandler = (product) => {
+    setProducts([...products, {id:uuid(), ...product}]);
+  } 
+
+  const removeProductHandler = (id) => {
+    const newProductList = products.filter((product) => {
+      return product.id !== id;
+    })
+
+    setProducts(newProductList);
+  };
+  
+  useEffect(() => {
+    const retrieveProducts = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
+    if (retrieveProducts) setProducts(retrieveProducts);
+  }, [])
+
+  useEffect(() => {
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(products));
+  }, [products]); 
+
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+  <div>
+    <h1>React App</h1>
+    <Sidebar/>
+    <DataTable products = {products} getProductID={removeProductHandler}/>
+    <ProductForm addProductHandler = {addProductHandler}/>
+  </div>
   );
-}
+};
 
 export default App;
