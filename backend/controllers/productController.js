@@ -1,5 +1,7 @@
 const asyncHandler = require("express-async-handler");
 const Product = require("../models/productModel");
+const mongoose = require("mongoose")
+const { ObjectId } = require('mongodb');
 
 
 
@@ -41,7 +43,9 @@ const createProduct = asyncHandler(async(req, res) => {
 const updateProduct = asyncHandler(async(req, res) => {
     try {
         const {id} = req.params;
-        const product = await Product.findByIdAndUpdate(id, req.body)
+        const objectID = new ObjectId(id);
+        
+        const product = await Product.findByIdAndUpdate(objectID, req.body)
         if(!product){
             return res.status(404).send({message: "Product not found"})
         }
@@ -57,7 +61,8 @@ const updateProduct = asyncHandler(async(req, res) => {
 const deleteProduct = asyncHandler(async(req, res) => {
     try {
         const {id} =req.params;
-        const product = await Product.findByIdAndDelete(id);
+        const objectID = new ObjectId(id);
+        const product = await Product.findByIdAndDelete(objectID);
         if(!product){
             return res.status(404).send({message: "Product not found"})
         }
