@@ -5,6 +5,7 @@ import Sidebar from "./Sidebar";
 import DataTable from './DataTable';
 import ProductForm from './AddProductForm';
 import EditProductForm from './EditProductForm';
+import Header from './Header';
 import axios from 'axios';
 import api from "../api/product"
 import product from '../api/product';
@@ -90,9 +91,9 @@ const App = () => {
 
   return (
   <div className = "ui container">
-    <h1>React App</h1>
-    <Sidebar/>
+    
     <Router>
+      <Sidebar/>
       <Routes>
         <Route path='/' exact element={<DataTable products = {products} removeProductID={deleteProduct}/>}/>
         <Route path='/addProduct' element={<ProductForm addProductHandler = {addProduct}/>}/>
