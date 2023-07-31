@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "./app.css"
 
 const dataTable = (props) => {
     const renderTable = props.products.map((products) => {
@@ -19,9 +20,12 @@ const dataTable = (props) => {
         )
     });
     return (
-        <div className = "main">
+        <div className = "Datatable">
             <Link to={"/addProduct"}>
-                <button className="ui button blue right" >Add Product</button>
+                <button className='addProductButton ui blue labeled icon button'>
+                <i className="add icon"></i>
+                    Add Product
+                </button>
             </Link>
              
             <table className="ui celled table">

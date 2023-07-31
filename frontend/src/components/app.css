@@ -1,0 +1,30 @@
+.Datatable{
+    padding:20px;
+
+    
+}
+.datacontainer {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+button {
+    margin-left: auto;
+}
+.mainimage{
+    align-items: center;
+    
+}
+.spacer{
+    padding:2vh;
+}
+.main-content{
+    padding-right: 1%;
+    padding-left: 18%;
+    padding-top: 1%;
+}
+
+.SignIn{
+    padding-top: 20vh;
+}
+

@@ -1,12 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import boxImage from "../images/box.jpg";
+import image from "../images/icon.jpg"
+import "./app.css"
 
 const Sidebar = () => {
     return (
-    <div className="push">
-        <div className="ui left visible vertical sidebar menu">
-            <img className="ui small centered circular image" src={boxImage} alt="nice" />
+    <div className="pusher">
+        <div className="ui primary left visible vertical sidebar menu">
+            <div className="spacer"></div>
+            <img className="mainimage ui small centered circular bordered image" src={image} alt="nice" />
             <h1 className="ui centered teal header">
                 Inventory App
             </h1>
